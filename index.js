@@ -1,1 +1,1 @@
-const last = (arr) => arr[arr.length - 1];
+const isEven = (num) => num % 2 === 0;
