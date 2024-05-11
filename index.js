@@ -1,9 +1,16 @@
-const pullAtIndex = (arr, pullArr) => {
-  let removed = [];
-  let pulled = arr
-    .map((v, i) => (pullArr.includes(i) ? removed.push(v) : v))
-    .filter((v, i) => !pullArr.includes(i));
-  arr.length = 0;
-  pulled.forEach((v) => arr.push(v));
-  return removed;
-};
+function search(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (nums[mid] === target) return mid;
+    if (nums[left] <= nums[mid]) {
+      if (nums[left] <= target && target < nums[mid]) right = mid - 1;
+      else left = mid + 1;
+    } else {
+      if (nums[mid] < target && target <= nums[right]) left = mid + 1;
+      else right = mid - 1;
+    }
+  }
+  return -1;
+}
