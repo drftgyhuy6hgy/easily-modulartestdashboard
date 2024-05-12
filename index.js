@@ -1,16 +1,15 @@
-function search(nums, target) {
-  let left = 0;
-  let right = nums.length - 1;
-  while (left <= right) {
-    const mid = Math.floor((left + right) / 2);
-    if (nums[mid] === target) return mid;
-    if (nums[left] <= nums[mid]) {
-      if (nums[left] <= target && target < nums[mid]) right = mid - 1;
-      else left = mid + 1;
-    } else {
-      if (nums[mid] < target && target <= nums[right]) left = mid + 1;
-      else right = mid - 1;
-    }
+function removeNthFromEnd(head, n) {
+  const dummy = new ListNode(0);
+  dummy.next = head;
+  let first = dummy;
+  let second = dummy;
+  for (let i = 0; i <= n; i++) {
+    first = first.next;
   }
-  return -1;
+  while (first !== null) {
+    first = first.next;
+    second = second.next;
+  }
+  second.next = second.next.next;
+  return dummy.next;
 }
