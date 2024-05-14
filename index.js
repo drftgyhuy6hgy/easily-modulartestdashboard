@@ -1,1 +1,3 @@
-console.log("hi world");
+function countConsonants(str) {
+  return str.match(/[bcdfghjklmnpqrstvwxyz]/gi).length;
+}
